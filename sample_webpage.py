@@ -7,12 +7,12 @@ def hello_world():
 	return render_template('home.html')
  
 
-@app.route('/stylesheet')
-def stylesheet():
-    with open("static\stylesheets\stylesheet.css", "r") as css:
-        css_string = css.read()
+# @app.route('/stylesheet')
+# def stylesheet():
+    # with open("static\stylesheets\stylesheet.css", "r") as css:
+        # css_string = css.read()
 	# print("CSS Accessed")
-    return css_string    
+    # return css_string    
 
 if __name__ == '__main__':
 	# print("Application started")
