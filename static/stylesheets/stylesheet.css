@@ -1,8 +1,10 @@
+/* image styles*/
 img {
 	display: block;
 	margin: auto;
 }
 
+/* paragraph */
 p {
 	text-align: center;
 	font-family: Garamond, serif;
@@ -13,6 +15,7 @@ p {
 	color: #AAAAAA;
 }
 
+/* division */
 div {
 	border-radius: 5px;
 	border: 2px solid #6495ED;
@@ -23,6 +26,7 @@ div {
 	text-align: center;
 }
 
+/* hyperlink */
 a {
 	text-decoration: none;
 	color: #3D59AB;
@@ -30,12 +34,14 @@ a {
 	display: inline-block
 }
 
+/* section  */
 span {
 	font-weight: bold;
 	font-size: 18px;
 	color: #ffffff;
 }
 
+/* heading 1 */
 h1 {
 	color: #AAAAAA;
 	text-align: center;
@@ -44,6 +50,7 @@ h1 {
 	padding: 1em;
 }
 
+/* body */
 body {
 	background-color: #160033;
 }

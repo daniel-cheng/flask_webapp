@@ -1,9 +1,11 @@
-<!--Daniel Cheng 2014-05-21-11:57PM-->
+<!--Daniel Cheng 2014-05-22-01:03PM-->
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>HTML/CSS/Flask/Heroku Demo</title>
+		<!--Dynamic stylesheet linking through Jinja2. Otherwise, subsitute url for your own stylesheet (/static/stylesheets/stylesheet.css)-->
 		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}"/>
+		<!--d3 script initilization.-->
 		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
 	</head>
 	<body>
@@ -18,14 +20,17 @@
 			How does this even work...
 			<a href="http://paradoxspace.com/">doofwad</a>
 	    </p>
+		
+		<!--d3 script usage.-->
 	    <div id="viz"></div>
 		<script type="text/javascript">
-
+		<!--Creates svg vector graph, displaying in the html element with id #viz-->
 		var sampleSVG = d3.select("#viz")
 			.append("svg")
 			.attr("width", 100)
 			.attr("height", 100);    
-
+		
+		<!--Hovering is still wonky? Will have to check out later.-->
 		sampleSVG.append("circle")
 			.style("stroke", "gray")
 			.style("fill", "white")
