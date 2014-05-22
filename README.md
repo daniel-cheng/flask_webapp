@@ -6,4 +6,7 @@ This setup was done to allow us maximium efficiency and minimize
 setbacks during the hackathon.
 
 This app utilizes d3.js to display data from external APIs in a 
-simple way.
+simple way. 
+
+It will also utilize the Youtube API in order to extract the displayed
+data
