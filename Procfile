@@ -1,2 +1,2 @@
-web: python sample_webpage.py $PORT
+web: python sample_webpage.py
  
