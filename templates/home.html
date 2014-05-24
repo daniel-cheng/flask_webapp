@@ -30,8 +30,19 @@
                 <li>
                     <a href="yahoo.com">tabzzz</a>
                 </li>
+                
+                <li>
+                    {{ form.username }}
+                </li>
             </ul>
-
+            {% from "_formhelpers.html" import render_field %}
+                <form method=post action="/">
+                  <dl>
+                    {{ render_field(form.username) }}
+                  </dl>
+                  <p><input type=submit value=Submit>
+                </form>
+        
             <p id="viz">
             </p>
                 <script type="text/javascript">
