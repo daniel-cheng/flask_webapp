@@ -32,22 +32,37 @@
                 </li>
                 
                 <li>
-                    {{ form.username }}
+                    {{ form.channelname }}
                 </li>
             </ul>
             {% from "_formhelpers.html" import render_field %}
                 <form method=post action="/">
                   <dl>
-                    {{ render_field(form.username) }}
+                    {{ render_field(form.channelname) }}
                   </dl>
                   <p><input type=submit value=Submit>
                 </form>
-        
+            {% if data %}
+                <img src= "{{data['items'][0]['snippet']['thumbnails']['default']['url']}}"/>
+                {{data['items'][0]['snippet']['title']}}
+            {% endif %}
+
             <p id="viz">
             </p>
                 <script type="text/javascript">
                 <!--Creates svg vector graph, displaying in the html element with id #viz-->
-                 function click(){
+                width = 700;
+                height = 400;
+
+                function displayNode(){
+                    svg.append("circle")
+                      .attr("transform", "translate(" + width / 2  + "," + height / 2 + ")")
+                      .attr("r", "5")
+                      .attr("class", "dot")
+                      .style("cursor", "pointer")
+                      .call(drag);
+                }
+                function click(){
                   // Ignore the click event if it was suppressed
                   if (d3.event.defaultPrevented) return;
 
@@ -72,8 +87,8 @@
 
                 // Add a background
                 svg.append("rect")
-                  .attr("width", 700)
-                  .attr("height", 400)
+                  .attr("width", width)
+                  .attr("height", height)
                   .style("stroke", "#999999")
                   .style("fill", "#F6F6F6")
 

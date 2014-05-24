@@ -1,4 +1,4 @@
 from wtforms import Form, TextField
 
-class UserForm(Form):
-    username = TextField('Username')
+class ChannelForm(Form):
+    channelname = TextField('Channel name')
