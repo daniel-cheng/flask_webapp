@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # .route Decorator function creates the actual URL structure of the site - see example below for adding additional pages
 @app.route('/')
+@app.route('/home')
 def hello_world():
 	# print("HTML Accessed")
 	#Flask utilizes Jinja2 to dynamically parse html files. render_template bascially returns a string of the html file, but with subsituted information from Jinja2.
