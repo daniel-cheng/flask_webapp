@@ -6,19 +6,31 @@
 		<!--Dynamic stylesheet linking through Jinja2. Otherwise, subsitute url for your own stylesheet (/static/stylesheets/stylesheet.css)-->
 		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}"/>
 		<!--d3 script initilization.-->
-		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+		<!--<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>-->
 	</head>
 	<body>
-	    <h1>Hello!
-	    </h1>
-	    <p>
-			<a href="http://paradoxspace.com/deadline-day/1">
-				<img src="http://5dba6a3fed9e496b8770-f2149e9127ff8540d4cb880380183fc8.r80.cf2.rackcdn.com/page_images/79/4d2b93bde7d782d6540eb4f429daa2c9b6e77f98.png"/>
-			</a>
-		</p>
-		<p>
-			How does this even work...
-			<a href="http://paradoxspace.com/">doofwad</a>
+        <div class=head>
+            amazing title here
+        </div>
+        <ul class="topbar">
+            <li>
+                <a href="yahoo.com">Home</a>
+            </li>
+            <li>
+                <a href="yahoo.com">Tab</a>
+            </li>
+            <li>
+                <a href="yahoo.com">Another Tab</a>
+            </li>
+            <li>
+                <a href="yahoo.com">tabs</a>
+            </li>
+            <li>
+                <a href="yahoo.com">tabzzz</a>
+            </li>
+        </ul>
+		<p class="body">
+			Check out this body
 	    </p>
 		
 		<!--d3 script usage.-->
@@ -40,5 +52,9 @@
 			.text(function(d) { return d; });
 		
 		</script>
+    <div class="footer">
+        this is the footer
+    </div>
+
 	</body>
 </html>
