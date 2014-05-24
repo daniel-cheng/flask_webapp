@@ -13,8 +13,8 @@ def hello_world():
 	url = "https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8&part=snippet,contentDetails,statistics,status"
 	data = json.load(urllib2.urlopen(url))
 	viewCount = data['items'][0]['statistics']['viewCount']
-	print viewCount
-	return render_template('home.html', viewCount=viewCount, dummy="dummy")
+	thumbnail = data['items'][0]['snippet']['thumbnails']['medium']['url']
+	return render_template('home.html', viewCount=viewCount, dummy="dummy", thumbnail=thumbnail)
  
 # Example of adding pages. Uncomment for fun.
 # @app.route('/stylesheet')
