@@ -54,3 +54,13 @@ h1 {
 body {
 	background-color: #160033;
 }
+
+/* chart bar */
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}

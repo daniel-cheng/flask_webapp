@@ -22,23 +22,22 @@
 	    </p>
 		
 		<!--d3 script usage.-->
-	    <div id="viz"></div>
+		<div class="chart">
+			<div style="width: 40px;">4</div>
+			<div style="width: 80px;">8</div>
+			<div style="width: 150px;">15</div>
+			<div style="width: 160px;">16</div>
+			<div style="width: 230px;">23</div>
+			<div style="width: 420px;">42</div>
+		</div>
 		<script type="text/javascript">
-		<!--Creates svg vector graph, displaying in the html element with id #viz-->
-		var sampleSVG = d3.select("#viz")
-			.append("svg")
-			.attr("width", 100)
-			.attr("height", 100);    
-		
-		<!--Hovering is still wonky? Will have to check out later.-->
-		sampleSVG.append("circle")
-			.style("stroke", "gray")
-			.style("fill", "white")
-			.attr("r", 40)
-			.attr("cx", 50)
-			.attr("cy", 50)
-			.on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
-			.on("mouseout", function(){d3.select(this).style("fill", "white");});
+		<!--Creates svg vector graph-->
+		d3.select(".chart")
+			.selectAll("div")
+			.data(data)
+			.enter().append("div")
+			.style("width", function(d) { return d * 10 + "px"; })
+			.text(function(d) { return d; });
 		
 		</script>
 	</body>
