@@ -8,6 +8,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+flask/
 build/
 develop-eggs/
 dist/
@@ -22,6 +23,8 @@ var/
 *.egg
 venv/
 src/
+.idea/
+virtualenv.py
 
 # Installer logs
 pip-log.txt

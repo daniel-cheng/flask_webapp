@@ -9,8 +9,8 @@ p       {text-align: center;
         text-align:center;
         font-size:2em;}
 .body   {width: auto;
-        /*height: 15em;*/
-        height:auto;
+        height: 15em;
+        /*height:auto;*/
         color:white;}
 .footer {text-align:center;
         height:1.5em;
