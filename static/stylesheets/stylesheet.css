@@ -36,6 +36,7 @@ ul#menu, ul#menu ul.sub-menu {
     margin: 0;
 }
     ul#menu li, ul#menu ul.sub-menu li {
+        text-align:left;
         list-style-type: none;
         display: inline-block;
     }
