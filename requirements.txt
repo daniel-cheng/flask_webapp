@@ -2,7 +2,6 @@ Flask==0.10.1
 Flask-WTF==0.9.5
 Jinja2==2.7.2
 MarkupSafe==0.23
-PIL==1.1.7
 WTForms==1.0.5
 Werkzeug==0.9.4
 google-api-python-client==1.2
