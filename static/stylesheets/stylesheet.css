@@ -22,6 +22,16 @@ p       {text-align: center;
         padding: 3px;
         margin: 1px;
         color: white;}
+.tooltip {
+        pointer-events: none;
+        font-family: sans-serif;
+        font-size: 1.25em;
+        color:white;
+        font-weight: bold;
+        text-shadow: 2px 2px #000000;
+
+
+}
 
 #menu {text-align:center;}
 ul#menu, ul#menu ul.sub-menu {
