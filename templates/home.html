@@ -1,6 +1,4 @@
-
-
-<!--Daniel Cheng 2014-05-22-01:03PM-->
+<!--Van Nguyen, Stephanie Eng, Jordan Villanueva, and Daniel Cheng. HackUCI 2014-May 23-25. -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -42,30 +40,36 @@
                     var x;
                     var channel = prompt("Please enter the channel name:","smosh");
                     if (person != null) {
-                        post('/', {channelname: person})
+                        post('/', {channelname: person});
                     }
                 }
 
                 function helpFunction() {
-                    window.alert("TOO BAD\n")
+                    window.alert("TOO BAD\n");
                 }
 
                 function aboutFunction() {
-                    window.alert("HACK UCI 2014\n")
+                    window.alert("HACK UCI 2014\n");
                 }
             </script>
 
-                <form method=post action="/">
-                    <dl>
+            <!--A submittable html form with a header that includes a method and an action destination. When called by use input or through .submit(), sends its contents to the specified destination-->
+            <form id="submitForm" method=post action="/">
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {{ messages[0] }}
+                        {% else %}
+                            <label for="channelname">Channel name</label>
+                        {% endif %}
+                    {% endwith %}
 
-                    <dt><label for="channelname">Channel name</label>
-                    <dd><input id="channelname" name="channelname" type="text" value="">
+                    <input id="channelname" name="channelname" placeholder="Channel Name" type="text" value="destinws2">
+                    <input id="submitButton" type=submit value=Submit>
+                </p>
+            </form>
 
-                    </dd>
 
-                    </dl>
-                    <p><input type=submit value=Submit>
-                </form>
             {% set counter = 0 %}
             {% for l in data %}
                 <svg id="s{{counter}}" width="0" height="0">
@@ -75,7 +79,6 @@
                 </svg>
 
                 <script type="text/javascript">
-
                     var svg = d3.select("body")
                         .append("svg")
                         .attr("height", "15em")
@@ -91,6 +94,7 @@
                             function() {
                                 d3.select(this)
                                     .style("fill", "url(#i{{counter}})");
+                                tooltip.text("{{l[1]}}");
                                 return tooltip.style("visibility", "visible");
                             }
                         )
@@ -106,14 +110,21 @@
                                     .style("fill", "transparent")
                                 return tooltip.style("visibility", "hidden");
                             }
+                        )
+                        .on("click",
+                            function() {
+                                var elem = document.getElementById("channelname");
+                                elem.value = "{{ l[1] }}";
+                                document.getElementById("submitButton").click();
+                            }
                         );
+
                     var tooltip = d3.select("body")
                         .append("div")
                         .attr("class", "tooltip")
                         .style("position", "absolute")
                         .style("z-index", "10")
-                        .style("visibility", "hidden")
-                        .text("{{l[1]}}");
+                        .style("visibility", "hidden");
                 </script>
             {% set counter = counter + 1 %}
             {% endfor %}

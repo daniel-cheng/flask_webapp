@@ -13,22 +13,16 @@ YOUR_API_KEY = "AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8"
 @app.route('/', methods=['GET','POST'])
 def CostlyBanana():
     form = ChannelForm(request.form)
-    data = ""
     channelsDetails = []
     channelname=""
     if request.method == 'POST':
         #get channel, channel url
         channelname = form.channelname.data
         url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q={channelname}&type=channel&key={api_key}".format(channelname=channelname, api_key=YOUR_API_KEY)
-        data = json.load(urllib2.urlopen(url))
         try:
-            channel = []
-            channel.append(data['items'][0]['snippet']['thumbnails']['default']['url'])
-            channel.append(data['items'][0]['snippet']['title'])
-            channel.append(data['items'][0]['snippet']['channelId'])
+            data = json.load(urllib2.urlopen(url))
             search_url = "https://www.googleapis.com/youtube/v3/subscriptions?key=AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8&part=snippet&channelId={channelid}&key={api_key}".format(channelid=data['items'][0]['snippet']['channelId'],api_key=YOUR_API_KEY)
             data = json.load(urllib2.urlopen(url))
-            channelsDetails.append(channel)
             count = 0
             while count < data['pageInfo']['totalResults']:
                 results = 0
@@ -41,8 +35,8 @@ def CostlyBanana():
                 except:
                     break
         except:
-            raise
-    return render_template('home.html', data=channelsDetails, form=form)
+            flash("No channels with videos found!")
+    return render_template('home.html', data=channelsDetails, form=form, channelname=channelname)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
