@@ -1,2 +1,2 @@
-web: python sample_webpage.py
+web: python run.py
  
