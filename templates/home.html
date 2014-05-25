@@ -7,44 +7,53 @@
 		<!--Dynamic stylesheet linking through Jinja2. Otherwise, subsitute url for your own stylesheet (/static/stylesheets/stylesheet.css)-->
 		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}"/>
 		<!--d3 script initilization.-->
-		<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+		<!--<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>-->
 	</head>
 	<body>
         <div class="body">
             <div class="head">
-                amazing title here
+                YouTube Visualizer
             </div>
-            <ul class="topbar">
-                <li>
-                    <a href="yahoo.com">Home</a>
-                </li>
-                <li>
-                    <a href="yahoo.com">Tab</a>
-                </li>
-                <li>
-                    <a href="yahoo.com">Another Tab</a>
-                </li>
-                <li>
-                    <a href="yahoo.com">tabs</a>
-                </li>
-                <li>
-                    <a href="yahoo.com">tabzzz</a>
-                </li>
-                
-                <li>
-                    {{ form.channelname }}
-                </li>
-            </ul>
+
+        <ul id="menu">
+            <li><a onclick="channelFunction()" href="#">Enter Channel Name</a></li>
+            <li><a href="#">Visualizations</a>
+               <ul class="sub-menu">
+                    <li><a href="#">Bubble Map</a></li>
+                    <li><a href="#">Bar Graph</a></li>
+                    <li><a href="#">Pie Graph</a></li>
+               </ul>
+            </li>
+            <li><a href="#">Sort By</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Subscribers</a></li>
+                    <li><a href="#">View Count</a></li>
+                    <li><a href="#">Subscriptions</a></li>
+                    <li><a href="#">Date</a></li>
+                </ul>
+            </li>
+            <li><a onclick="helpFunction()" href="#">Help</a></li>
+            <li><a onclick="aboutFunction()" href="#">About</a></li>
+        </ul>
+
+
+
             {% from "_formhelpers.html" import render_field %}
                 <form method=post action="/">
                   <dl>
                     {{ render_field(form.channelname) }}
                   </dl>
-                  <p><input type=submit value=Submit>
+                  <input type=submit value=Submit>
                 </form>
+
+
             {% if data %}
                 <img src= "{{data['items'][0]['snippet']['thumbnails']['default']['url']}}"/>
                 {{data['items'][0]['snippet']['title']}}
+                {% for row in data2['items'] %}
+                    <p>{{ row['snippet']['title']}} <br>
+                       <img src="{{ row['snippet']['thumbnails']['default']['url']}}"></p>
+                {% endfor %}
             {% endif %}
 
             <p id="viz">
@@ -73,7 +82,7 @@
                   // Append a new point
                   svg.append("circle")
                       .attr("transform", "translate(" + p.x + "," + p.y + ")")
-                      .attr("r", "5")
+                      .attr("r", "20")
                       .attr("class", "dot")
                       .style("cursor", "pointer")
                       .call(drag);
@@ -92,7 +101,7 @@
                   .style("stroke", "#999999")
                   .style("fill", "#F6F6F6")
 
-                // Define drag beavior
+                // Define drag behavior
                 var drag = d3.behavior.drag()
                     .on("drag", dragmove);
 
@@ -100,15 +109,33 @@
                   var x = d3.event.x;
                   var y = d3.event.y;
                   d3.select(this).attr("transform", "translate(" + x + "," + y + ")");
+
+
+                }
+
+                function channelFunction() {
+                    var x;
+                    var channel = prompt("Please enter the channel name:","smosh");
+                    if (person != null) {
+                        post('/', {channelname: person})
+                    }
+                }
+
+                function helpFunction() {
+                    window.alert("TOO BAD\n")
+                }
+
+                function aboutFunction() {
+                    window.alert("HACK UCI 2014\n")
                 }
 
 
                 </script>
 
-            </p>
+
 
             <!--d3 script usage.-->
-            <p>How does this even work...should've	{{ viewCount }} {{ dummy }}
+            <p>How does this even work...shouldve	{{ viewCount }} {{ dummy }}
                 <a href={{thumbnail}}>doofwad</a>
                 <img src={{ thumbnail }}/></p>
 

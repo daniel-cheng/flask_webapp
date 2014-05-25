@@ -11,13 +11,25 @@ YOUR_API_KEY = "AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8"
 def CostlyBanana():
     form = ChannelForm(request.form)
     data = ""
+    data2= ""
     if request.method == 'POST':
+        #get channel, channel url
         channelname = form.channelname.data
         url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q={channelname}&type=channel&key={api_key}".format(channelname=channelname,api_key=YOUR_API_KEY)
         data = json.load(urllib2.urlopen(url))
+
+        #gets channel id, and channel title/video url
+        channelId = data['items'][0]['snippet']['channelId']
+        channel = "https://www.googleapis.com/youtube/v3/activities?part=snippet&channelId={channelId}&key=AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8".format(channelId=channelId)
+        data2 = json.load(urllib2.urlopen(channel))
+
+        #
+
+
+
     #channelName = data['items'][0]['statistics']['viewCount']
     #thumbnail = data['items'][0]['snippet']['thumbnails']['medium']['url']
-    return render_template('home.html', data=data, form=form)
+    return render_template('home.html', data=data, form=form,data2=data2)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
