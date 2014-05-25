@@ -18,8 +18,8 @@ def CostlyBanana():
     if request.method == 'POST':
         #get channel, channel url
         channelname = form.channelname.data
-        url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q={channelname}&type=channel&key={api_key}".format(channelname=channelname, api_key=YOUR_API_KEY)
         try:
+            url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q={channelname}&type=channel&key={api_key}".format(channelname=channelname, api_key=YOUR_API_KEY)
             data = json.load(urllib2.urlopen(url))
             search_url = "https://www.googleapis.com/youtube/v3/subscriptions?key=AIzaSyCvmUuH7_MNaGQG5Sxbb6jhyVTa_5aLCA8&part=snippet&channelId={channelid}&key={api_key}".format(channelid=data['items'][0]['snippet']['channelId'],api_key=YOUR_API_KEY)
             data = json.load(urllib2.urlopen(url))
